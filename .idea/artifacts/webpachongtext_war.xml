@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="webpachongtext:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/webpachongtext_war</output-path>
+    <root id="archive" name="webpachongtext_war.war">
+      <element id="artifact" artifact-name="webpachongtext:war exploded" />
+    </root>
+  </artifact>
+</component>
