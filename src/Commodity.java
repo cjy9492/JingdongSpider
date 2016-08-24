@@ -8,10 +8,14 @@ public class Commodity {
       /*  ArrayList<String> imgSrc1 = RegexString(result, "num.>(.+?)<");
         ArrayList<String> imgSrc2 = RegexString(result, "compareUp.>(.+?)<");
         ArrayList<String> imgSrc3 = RegexString(result, "link current.>(.+?)<");*/
+        if("skuids input error".equals(result)){
+            return "error";
+        }
+        else {
         String[] obj=result.split(",");
         String[] obj1=obj[1].split("\"");
         /*System.out.println(obj1[3]);*/
-        return obj1[3];
+        return obj1[3];}
     }
     public static String title(String result){
         String[] obj=result.split("<title>");

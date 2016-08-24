@@ -231,12 +231,16 @@ public class Controller extends HttpServlet {
             }
             if (shopid != "" && prace != "" && email != "" && isNumeric(shopid) && isemaill(email) && isNumeric(prace)) {
                 for (int l = 0; l < shopList.size(); l++) {
-                    if (shopList.get(l).getId().equals(shopid)) {
+                    if (shopList.get(l).getId().equals(shopid)&&shopList.get(l).getEmail().equals(email)) {
                         flag2 = false;
                         break;
                     } else flag2 = true;
                 }
-
+            if (flag2){
+            if(Commodity.price(Spider.SendGet("http://p.3.cn/prices/get?skuid=J_"+shopid)).equals("error")){
+                flag2 = false;
+            }
+            }
                 if (flag2) {
                     num++;
                     flag = false;
@@ -263,7 +267,7 @@ public class Controller extends HttpServlet {
                     req.setAttribute("myprace", shopList1);
                     req.getRequestDispatcher("index.jsp").forward(req, resp);
                 } else {
-                    type = "该id已经包含在列表中！无须重复添加！";
+                    type = "该id已经包含在列表中或者该id不是个有效的id！请检查！";
                     req.setAttribute("name", type);
                     req.getRequestDispatcher("index.jsp").forward(req, resp);
                 }
